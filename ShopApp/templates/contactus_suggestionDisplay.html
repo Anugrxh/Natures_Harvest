@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Contact uus suggestion</title>
+</head>
+<body>
+
+<div class="card">
+                <div class="card-body">
+
+
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            Name
+                          </th>
+                          <th>
+                            Email-ID
+                          </th>
+                          <th>
+                            Mobile
+                          </th>
+                            <th>
+                            Subject
+                          </th>
+                            <th>
+                            Suggestions
+                          </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in data %}
+
+                        <tr>
+                          <td>
+                            {{i.contactname}}
+                          </td>
+                          <td>
+                            {{i.email}}
+                          </td>
+                          <td>
+                            {{i.contactnumber}}
+                          </td>
+                            <td>{{i.subject}}</td>
+                            <td>{{i.suggestion}}</td>
+
+                          <td>
+<!--                            <form action="{% url 'cat_edit' dataid=i.id  %}">-->
+<!--                              <button type="submit" class="btn btn-primary mr-2">Edit</button>-->
+<!--                            </form>-->
+<!--                          </td>-->
+<!--                          <td>-->
+                            <form action="{% url 'contact_suggestion_delete' del_id=i.id %}">
+                              <button type="submit" class="btn btn-outline-light btn-fw">Delete</button>
+                            </form>
+                          </td>
+                        </tr>
+
+                      {% endfor %}
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+</body>
+</html>
+{% endblock %}
